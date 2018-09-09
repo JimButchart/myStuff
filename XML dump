@@ -1,0 +1,33 @@
+<!---Given the following XML I want to test for errors --->
+
+<cfxml variable="xml">
+	<?xml version="1.0" encoding="UTF-8"?>
+	<createTransactionResponse>
+		<messages>
+			<message>
+				<text>
+					<XmlText>The transaction was unsuccessful.</XmlText>
+				</text>
+			</message>
+		</messages>
+		<transactionResponse>
+			<errors>
+				<error>
+					<errorText>
+						<XmlText>The credit card number is invalid.</XmlText>
+					</errorText>
+				</error>
+			</errors>
+		</transactionResponse>
+	</createTransactionResponse>
+</cfxml>
+
+<!--- The issue I am having is that I need to see if the node "errors" exists. structKeyExists doesn't work --->
+
+<cfif structKeyExists(xml, 'errors')>
+	<cfset result = "Yep errors exits">
+<cfelse>
+	<cfset result = "Nope. No errors here">
+</cfif>
+
+<cfoutput>#result#</cfoutput>
