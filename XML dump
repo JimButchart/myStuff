@@ -24,7 +24,7 @@
 
 <!--- The issue I am having is that I need to see if the node "errors" exists. structKeyExists doesn't work --->
 
-<cfif structKeyExists(xml, 'errors')>
+<cfif structKeyExists(xml, 'errors')> <!--- am I using this wrong? Errors is a key, right? --->
 	<cfset result = "Yep errors exits">
 <cfelse>
 	<cfset result = "Nope. No errors here">
